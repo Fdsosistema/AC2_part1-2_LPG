@@ -46,8 +46,13 @@ export class Dataservice {
   };
 
     updateItem(item: Item){
-    const itemDocRef = collection(this.firestore, `items`);
-    return addDoc(itemDocRef, {...item, createdAt: Date.now()});
+    const itemDocRef = doc(this.firestore, `items/${item.id}`);
+    return updateDoc(itemDocRef, {name: item.name, description: item.description});
+  };
+
+    deleteItem(id:string){
+    const itemDocRef = doc(this.firestore, `items/${id}`);
+    return deleteDoc(itemDocRef);
   };
 
 }
