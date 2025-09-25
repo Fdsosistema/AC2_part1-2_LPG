@@ -1,0 +1,7 @@
+{
+  "name": "fafa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
