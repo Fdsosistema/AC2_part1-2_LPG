@@ -30,7 +30,7 @@ export class Dataservice {
   }
 
   getItems(): Observable<Item[]> {
-    const itemsCollectionRef = collection(this.firestore, 'Items');
+    const itemsCollectionRef = collection(this.firestore, 'items');
     const q = query(itemsCollectionRef, orderBy('createdAt', 'desc'));
     return collectionData(q, { idField: 'id'}) as Observable<Item[]>;
   };
@@ -41,7 +41,7 @@ export class Dataservice {
   };
 
   addItem(item: Item){
-    const itemsCollectionRef = collection(this.firestore, `items`);
+    const itemsCollectionRef = collection(this.firestore, 'items');
     return addDoc(itemsCollectionRef, {...item, createdAt: Date.now()});
   };
 
