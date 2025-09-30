@@ -14,8 +14,11 @@ import { LoadingController, ToastController } from '@ionic/angular';
 export class PageDetailPage implements OnInit {
 
   item: Item = {
-    name: '',
-    description: ''
+      name: '',
+  raca: '',
+  especie: '',
+  idade: '',
+  obeservacoesIniciais: '',
   };
 
   itemId: string | null = null;
@@ -67,7 +70,7 @@ this.loadItem();
       message: 'salvando Item...'
     });
     await loading.present();
-    
+
     if (this.isNewItem){
       this.dataService.addItem(this.item).then(() => {
         loading.dismiss();
@@ -77,7 +80,7 @@ this.loadItem();
       }, err => {
         loading.dismiss();
         this.presentToast('erro ao adicionar item.' , 'danger');
-      });      
+      });
     } else {
       this.dataService.updateItem(this.item).then(() => {
         loading.dismiss();

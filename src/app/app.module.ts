@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore'
 

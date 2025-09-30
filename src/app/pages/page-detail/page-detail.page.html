@@ -10,15 +10,33 @@
 <ion-content  class="ion-padding">
 
 <form #form="ngForm" (ngSubmit)="saveItem()">
- 
+
   <ion-item>
    <ion-label position="floating">Nome</ion-label>
    <ion-input type="text" [(ngModel)]="item.name" name="name" required></ion-input>
   </ion-item>
 
   <ion-item>
-   <ion-label position="floating">Descrição</ion-label>
-   <ion-textarea rows="4" [(ngModel)]="item.description" name="description"></ion-textarea>
+   <ion-label position="floating">especie</ion-label>
+   <ion-input type="text"[(ngModel)]="item.especie" name="especie"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+   <ion-label position="floating">raca</ion-label>
+   <ion-input type="text"[(ngModel)]="item.raca" name="raca"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+   <ion-label position="floating">idade</ion-label>
+   <ion-input type="number"[(ngModel)]="item.idade" name="idade"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+   <ion-label position="floating">obeservacoesIniciais</ion-label>
+   <ion-textarea rows="4" [(ngModel)]="item.obeservacoesIniciais" name="obeservacoesIniciais"></ion-textarea>
   </ion-item>
 
   <ion-button expand="full" type="submit" [disabled]="!form.valid" class="ion-margin-top">
