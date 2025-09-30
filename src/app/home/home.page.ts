@@ -1,6 +1,7 @@
+
 import { Component } from '@angular/core';
 
-import { Dataservice, Item } from '../services/data';
+import { Dataservice, Item, Cuidador } from '../services/data';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -13,7 +14,7 @@ import { AlertController } from '@ionic/angular';
 export class HomePage {
 
   items: Item[] =[];
-
+cuidadores: Cuidador[] = [];
 
   constructor(
     private dataService: Dataservice,
@@ -25,7 +26,12 @@ export class HomePage {
     this.dataService.getItems().subscribe(res => {
       this.items = res;
     });
+     this.dataService.getOwners().subscribe(res => {
+      this.cuidadores = res;
+    });
   }
+
+//Pets
 
   addItem(){
     this.router.navigateByUrl('/page-detail')
@@ -35,12 +41,22 @@ editItem(item: Item){
   this.router.navigateByUrl(`/page-detail/${item.id}`);
 }
 
+//cuidador
+  addOwner(){
+    this.router.navigateByUrl('/owner-detail')
+  }
+
+editOwner(cuidador: Cuidador){
+  this.router.navigateByUrl(`/owner-detail/${cuidador.id}`);
+}
+
+
 async deleteItem(id:string){
   const alert = await this.alertController.create({
     header : 'Confirmar exclusão',
 message : 'Tem certeza que deseja excluir este item?',
 buttons: [
-  
+
   {
     text: 'cancelar',
     role: 'cancel',
@@ -49,7 +65,10 @@ buttons: [
 {
 text : 'Excluir',
 handler: () => {
+
   this.dataService.deleteItem(id);
+  this.dataService.deleteOwner(id);
+
 },
 },
 ],

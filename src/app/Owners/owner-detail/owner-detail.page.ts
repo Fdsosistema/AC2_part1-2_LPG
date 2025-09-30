@@ -1,36 +1,38 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { Dataservice,Item } from 'src/app/services/data';
+import { Dataservice,Cuidador } from 'src/app/services/data';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-page-detail',
-  templateUrl: './page-detail.page.html',
-  styleUrls: ['./page-detail.page.scss'],
+  selector: 'app-owner-detail',
+  templateUrl: './owner-detail.page.html',
+  styleUrls: ['./owner-detail.page.scss'],
   standalone: false,
 })
-export class PageDetailPage implements OnInit {
+export class OwnerDetailPage implements OnInit {
 
-item: Item = {
-      name: '',
-  raca: '',
-  especie: '',
-  idade: '',
-  obeservacoesIniciais: '',
-  };
 
-  itemId: string | null = null;
-  isNewItem = true;
+  cuidador: Cuidador = {
+        name: '',
+   telefone: '',
+   expecialidade:'',
+   experience:'',
+    };
+
+    cuidadorID: string | null = null;
+    isNewItem = true;
+
 
   constructor(private route: ActivatedRoute, private dataService: Dataservice, private router: Router,
     private loadingController: LoadingController, private toastcontroller: ToastController) { }
 
   ngOnInit() {
-    this.itemId = this.route.snapshot.paramMap.get('id');
+    this.cuidadorID = this.route.snapshot.paramMap.get('id');
 
-    if (this.itemId) {
+    if (this.cuidadorID) {
       this.isNewItem = false;
 this.loadItem();
     }
@@ -44,10 +46,10 @@ this.loadItem();
 
     await loading.present();
 
-    this.dataService.getItem(this.itemId!).subscribe(res => {
+    this.dataService.getOwner(this.cuidadorID!).subscribe(res => {
       loading.dismiss();
       if (res) {
-        this.item = res;
+        this.cuidador=res
       } else {
         this.presentToast('Item nao encontrado!', 'danger');
         this.router.navigateByUrl('/home')
@@ -62,18 +64,16 @@ this.loadItem();
 
 
 
-
-
   async saveItem(){
     const loading = await this.loadingController.create({
-      message: 'salvando Pet...'
+      message: 'salvando...'
     });
     await loading.present();
 
     if (this.isNewItem){
-      this.dataService.addItem(this.item).then(() => {
+      this.dataService.addOwner(this.cuidador).then(() => {
         loading.dismiss();
-        this.presentToast('Pet adicionado', 'sucesso');
+        this.presentToast('cuidador adicionado', 'sucesso');
         this.router.navigateByUrl('/home');
 
       }, err => {
@@ -81,7 +81,7 @@ this.loadItem();
         this.presentToast('erro ao adicionar Pet.' , 'danger');
       });
     } else {
-      this.dataService.updateItem(this.item).then(() => {
+      this.dataService.updateOwner(this.cuidador).then(() => {
         loading.dismiss();
         this.presentToast('Dados atualizados', 'sucess');
         this.router.navigateByUrl('/home');
@@ -101,4 +101,5 @@ this.loadItem();
     });
     toast.present();
   }
+
 }

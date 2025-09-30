@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  <ion-buttons slot="start">
+  <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-buttons>
+<ion-title>{{isNewItem ? 'Adicionar Novo Item' : 'Editar Item'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+
+<form #form="ngForm" (ngSubmit)="saveItem()">
+
+  <ion-item>
+   <ion-label position="floating">Nome</ion-label>
+   <ion-input type="text" [(ngModel)]="cuidador.name" name="name" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+   <ion-label position="floating">telefone</ion-label>
+   <ion-input type="number"[(ngModel)]="cuidador.telefone" name="telefone"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+   <ion-label position="floating">experience</ion-label>
+   <ion-input type="number"[(ngModel)]="cuidador.experience" name="experience"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+   <ion-label position="floating">expecialidade</ion-label>
+   <ion-input type="text"[(ngModel)]="cuidador.expecialidade" name="expecialidade"></ion-input>
+  </ion-item>
+
+
+
+  <ion-button expand="full" type="submit" [disabled]="!form.valid" class="ion-margin-top">
+    Salvar
+  </ion-button>
+</form>
+
+</ion-content>

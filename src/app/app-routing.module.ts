@@ -18,7 +18,16 @@ const routes: Routes = [
   {
     path: 'page-detail/:id',
     loadChildren: () => import ('./pages/page-detail/page-detail.module').then( m => m.PageDetailPageModule)
+  },
+  {
+    path: 'owner-detail',
+    loadChildren: () => import('./Owners/owner-detail/owner-detail.module').then( m => m.OwnerDetailPageModule)
+  },
+    {
+    path: 'owner-detail/:id',
+    loadChildren: () => import('./Owners/owner-detail/owner-detail.module').then( m => m.OwnerDetailPageModule)
   }
+
 ];
 
 @NgModule({

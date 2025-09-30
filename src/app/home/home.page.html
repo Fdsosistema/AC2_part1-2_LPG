@@ -1,44 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
- aaaa
-    </ion-title>
-  <ion-buttons slot="end">
-    <ion-button (click)="addItem()">
-      <ion-icon name="add"></ion-icon>
-    </ion-button>
-  </ion-buttons>
+    <ion-title> aaaa </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addOwner()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngIf="items.length === 0">
+            <ion-label>nenhum item cadastrado</ion-label>
+          </ion-item>
 
-<ion-list>
-  <ion-item *ngIf="items.length === 0">
-    <ion-label>nenhum item cadastrado</ion-label>
-  </ion-item>
+          <ion-item-sliding *ngFor="let item of items">
+            <ion-item lines="full" button (click)="editItem(item)">
+              <ion-list>
+                <ul>
+                  <p>{{item.name}}</p>
+                  <p>{{item.especie}}</p>
+                  <p>{{item.raca}}</p>
+                  <p>{{item.idade}}</p>
+                  <p>{{item.obeservacoesIniciais}}</p>
+                </ul>
+              </ion-list>
+            </ion-item>
 
-  <ion-item-sliding *ngFor="let item of items">
-    <ion-item lines="full" button (click)="editItem(item)">
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="deleteItem(item.id!)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngIf="cuidadores.length === 0">
+            <ion-label>nenhum item cadastrado</ion-label>
+          </ion-item>
+          <ion-item-sliding *ngFor="let owner of cuidadores">
+            <ion-item lines="full" button (click)="editOwner(owner)"></ion-item>
 
-<ion-list>
-  <ul>
-    <p>{{item.name}}</p>
-<p>{{item.especie}}</p>
-<p>{{item.raca}}</p>
-<p>{{item.idade}}</p>
-<p>{{item.obeservacoesIniciais}}</p>
-  </ul>
-</ion-list>
+            <ul>
+            <p>{{owner.name}}</p>
+            <p>{{owner.telefone}}</p>
+            <p>{{owner.expecialidade}}</p>
+            <p>{{owner.experience}}</p>
+</ul>
 
-    </ion-item>
-
-    <ion-item-options side="end">
-<ion-item-option color="danger" (click)="deleteItem(item.id!)">
-  <ion-icon slot="icon-only" name="trash"></ion-icon>
-</ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-
-</ion-list>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="deleteItem(owner.id!)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
