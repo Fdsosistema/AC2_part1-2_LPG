@@ -63,7 +63,7 @@ export class Dataservice {
 
     updateItem(item: Item){
     const itemDocRef = doc(this.firestore, `items/${item.id}`);
-    return updateDoc(itemDocRef, {name: item.name, raca: item.raca, especie: item.especie, idade: item.idade, observacoes: item.obeservacoesIniciais});
+    return updateDoc(itemDocRef, {name: item.name, raca: item.raca, especie: item.especie, idade: item.idade, obeservacoesIniciais: item.obeservacoesIniciais});
   };
 
     deleteItem(id:string){
@@ -91,7 +91,7 @@ export class Dataservice {
 
     updateOwner(cuidador: Cuidador){
     const cuidadorDocRef = doc(this.firestore, `cuidadores/${cuidador.id}`);
-    return updateDoc(cuidadorDocRef, {name: cuidador.name, telefone: cuidador.telefone, experiencia: cuidador.experience, expecialidade: cuidador.expecialidade});
+    return updateDoc(cuidadorDocRef, {name: cuidador.name, telefone: cuidador.telefone, experience: cuidador.experience, expecialidade: cuidador.expecialidade});
   };
 
     deleteOwner(id:string){
