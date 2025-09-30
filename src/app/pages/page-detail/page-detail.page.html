@@ -12,35 +12,35 @@
 <form #form="ngForm" (ngSubmit)="saveItem()">
 
   <ion-item>
-   <ion-label position="floating">Nome</ion-label>
+   <ion-label position="floating">Nome do pet</ion-label>
    <ion-input type="text" [(ngModel)]="item.name" name="name" required></ion-input>
   </ion-item>
 
   <ion-item>
-   <ion-label position="floating">especie</ion-label>
+   <ion-label position="floating">Especie do pet</ion-label>
    <ion-input type="text"[(ngModel)]="item.especie" name="especie"></ion-input>
   </ion-item>
 
 
   <ion-item>
-   <ion-label position="floating">raca</ion-label>
+   <ion-label position="floating">Raça do pet</ion-label>
    <ion-input type="text"[(ngModel)]="item.raca" name="raca"></ion-input>
   </ion-item>
 
 
   <ion-item>
-   <ion-label position="floating">idade</ion-label>
+   <ion-label position="floating">Idade do pet</ion-label>
    <ion-input type="number"[(ngModel)]="item.idade" name="idade"></ion-input>
   </ion-item>
 
 
   <ion-item>
-   <ion-label position="floating">obeservacoesIniciais</ion-label>
+   <ion-label position="floating">Observações Iniciais necessarias</ion-label>
    <ion-textarea rows="4" [(ngModel)]="item.obeservacoesIniciais" name="obeservacoesIniciais"></ion-textarea>
   </ion-item>
 
   <ion-button expand="full" type="submit" [disabled]="!form.valid" class="ion-margin-top">
-    Salvar
+    Salvar Dados do pet
   </ion-button>
 </form>
 

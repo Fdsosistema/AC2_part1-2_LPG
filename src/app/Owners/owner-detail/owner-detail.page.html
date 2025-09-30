@@ -12,31 +12,31 @@
 <form #form="ngForm" (ngSubmit)="saveItem()">
 
   <ion-item>
-   <ion-label position="floating">Nome</ion-label>
-   <ion-input type="text" [(ngModel)]="cuidador.name" name="name" required></ion-input>
+   <ion-label position="floating">Nome do Cuidador</ion-label>
+   <ion-input  type="text" [(ngModel)]="cuidador.name" name="name" required ></ion-input>
   </ion-item>
 
   <ion-item>
-   <ion-label position="floating">telefone</ion-label>
+   <ion-label position="floating">Numero de telefone</ion-label>
    <ion-input type="number"[(ngModel)]="cuidador.telefone" name="telefone"></ion-input>
   </ion-item>
 
 
   <ion-item>
-   <ion-label position="floating">experience</ion-label>
+   <ion-label position="floating">Experiencia</ion-label>
    <ion-input type="number"[(ngModel)]="cuidador.experience" name="experience"></ion-input>
   </ion-item>
 
 
   <ion-item>
-   <ion-label position="floating">expecialidade</ion-label>
+   <ion-label position="floating">Especialização </ion-label>
    <ion-input type="text"[(ngModel)]="cuidador.expecialidade" name="expecialidade"></ion-input>
   </ion-item>
 
 
 
   <ion-button expand="full" type="submit" [disabled]="!form.valid" class="ion-margin-top">
-    Salvar
+    Salvar Dados do Cuidador
   </ion-button>
 </form>
 
